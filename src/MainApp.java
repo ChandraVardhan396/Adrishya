@@ -196,7 +196,7 @@ public class MainApp {
                         ImageIO.write(maskPanel.getImage(), "png", new File("input_image.png"));
                         ImageIO.write(maskPanel.getMask(), "png", new File("input_mask.png"));
 
-                        ProcessBuilder pb = new ProcessBuilder("python", "inpaint.py",
+                        ProcessBuilder pb = new ProcessBuilder("python", "src/inpaint.py",
                                 "input_image.png", "input_mask.png", "output_image.png");
                         pb.redirectErrorStream(true);
                         Process process = pb.start();

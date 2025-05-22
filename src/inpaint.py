@@ -1,13 +1,12 @@
-import argparse
+
 import os
-import cv2
 import numpy as np
 from PIL import Image
 import torch
 import onnxruntime
 
 # Setup ONNX model
-onnx_model_path = 'lama_fp32.onnx'
+onnx_model_path = 'src/lama_fp32.onnx'
 if not os.path.exists(onnx_model_path):
     os.system(f"wget https://huggingface.co/Carve/LaMa-ONNX/resolve/main/{onnx_model_path}")
 
