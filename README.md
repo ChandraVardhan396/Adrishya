@@ -29,12 +29,12 @@ Adrishya AI is a Java-based IntelliJ project that removes unwanted objects from 
    ```bash
    cd path/to/AdrishyaAI
    
-#Install the required Python packages:
+Install the required Python packages:
    ```bash
    pip install -r requirements.txt
 ```
 
-#Open the project in IntelliJ IDEA.
+Open the project in IntelliJ IDEA.
 
 In IntelliJ, open the MainApp.java file and run the project.
 
