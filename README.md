@@ -32,7 +32,8 @@ Adrishya AI is a Java-based IntelliJ project that removes unwanted objects from 
 ---
 
 ## Requirements
-- Java 11 or higher  
+- Java 11 or higher
+- Java SDK 23 ( Recommended )
 - IntelliJ IDEA  
 - Python with pip installed  
 - MySQL server running  
