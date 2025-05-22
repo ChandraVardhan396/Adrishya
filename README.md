@@ -17,6 +17,7 @@ Adrishya AI is a Java-based IntelliJ project that removes unwanted objects from 
 ## Demo Image
 
 ![Adrishya AI Object Removal Demo](./assets/demo-image.png)  
+![Adrishya AI Object Removal Demo](./assets/demo-image2.png) 
 *Example of object removal using Adrishya AI*
 
 ---
