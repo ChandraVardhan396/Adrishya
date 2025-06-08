@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adrishya AI Object Remover Documentation</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Navbar styles */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background: #1e293b; /* dark slate */
+      color: #e2e8f0; /* light slate */
+      border-right: 2px solid #334155;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: 2px 0 8px rgb(0 0 0 / 0.1);
+      z-index: 1000;
+    }
+
+    #navbar header {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+
+    #navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    #navbar li {
+      margin-bottom: 1rem;
+      border-left: 4px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    #navbar li:hover,
+    #navbar li:focus-within {
+      border-left-color: #3b82f6; /* bright blue */
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    #navbar a.nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    #navbar a.nav-link:hover,
+    #navbar a.nav-link:focus {
+      color: #3b82f6;
+      outline: none;
+    }
+
+    /* Main content styles */
+    main#main-doc {
+      margin-left: 280px;
+      padding: 2.5rem 3rem;
+      max-width: 900px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    section.main-section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    section.main-section:last-child {
+      border-bottom: none;
+    }
+
+    section.main-section header {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      border-left: 6px solid #3b82f6;
+      padding-left: 0.8rem;
+      user-select: none;
+    }
+
+    article p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #475569;
+    }
+
+    article ul {
+      margin-left: 1.2rem;
+      list-style-type: disc;
+      color: #475569;
+    }
+
+    article ul li {
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    h4 {
+      margin-top: 1.6rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
+      color: #334155;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    /* Code block styling */
+    code {
+      display: block;
+      background: #f1f5f9;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      font-family: 'Source Code Pro', monospace, monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+      white-space: pre-wrap;
+      color: #0f172a;
+    }
+
+    /* Images styling */
+    article img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      display: block;
+    }
+
+    article img + img {
+      margin-top: 0.8rem;
+    }
+
+    /* Links */
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      #navbar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid #334155;
+        padding: 1.5rem 1rem;
+      }
+      main#main-doc {
+        margin-left: 0;
+        padding: 1.5rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="navbar" aria-label="Documentation Navigation">
+    <header>Adrishya AI Docs</header>
+    <ul>
+      <li><a class="nav-link" href="#overview">Overview</a></li>
+      <li><a class="nav-link" href="#features">Features</a></li>
+      <li><a class="nav-link" href="#demo-image">Demo Image</a></li>
+      <li><a class="nav-link" href="#demo-video">Demo Video</a></li>
+      <li><a class="nav-link" href="#requirements">Requirements</a></li>
+      <li><a class="nav-link" href="#setup-run">Setup &amp; Run</a></li>
+      <li><a class="nav-link" href="#project-structure">Project Structure</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-doc" class="main-doc">
+    <section class="main-section" id="overview">
+      <header>Adrishya AI - Image Object Remover</header>
+      <article>
+        <p><strong>Adrishya AI</strong> is a Java-based IntelliJ project that removes unwanted objects from images without quality loss. It uses Object-Oriented Programming concepts, a sleek FlatLaf UI, MySQL database, and the LAMA AI model via ONNX Runtime for fast, accurate, and seamless object removal.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="features">
+      <header>Features</header>
+      <article>
+        <ul>
+          <li>Lossless removal of unwanted objects from images</li>
+          <li>Java backend built with Object-Oriented Programming (OOP) principles</li>
+          <li>Modern FlatLaf UI for a smooth user experience</li>
+          <li>MySQL database for efficient data management</li>
+          <li>Powered by LAMA AI model using ONNX Runtime for precise editing</li>
+          <li>Developed as an IntelliJ IDEA project</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="demo-image">
+      <header>Demo Image</header>
+      <article>
+        <img src="./assets/demo_1.jpg" alt="Adrishya AI Object Removal Demo 1" />
+        <img src="./assets/demo_2.png" alt="Adrishya AI Object Removal Demo 2" />
+        <p><em>Example of object removal using Adrishya AI</em></p>
+      </article>
+    </section>
+
+    <section class="main-section" id="demo-video">
+      <header>Demo Video</header>
+      <iframe width="760" height="415" src="https://www.youtube.com/embed/VtjdBbs-jsg?si=0Ftp_00Z7Pk4wGhS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+
+    <section class="main-section" id="requir
+    ements">
+      <header>Requirements</header>
+      <article>
+        <ul>
+          <li>Java 11 or higher</li>
+          <li>Java SDK 23 (Recommended)</li>
+          <li>IntelliJ IDEA</li>
+          <li>Python with pip installed</li>
+          <li>MySQL server running</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="setup-run">
+      <header>Setup &amp; Run Instructions</header>
+      <article>
+        <ol>
+          <li>Ensure <strong>Python with pip</strong> is installed on your system.</li>
+          <li>Download the LAMA AI model from the link below:<br/>
+            <a href="https://drive.google.com/file/d/1Bvm5PE93j4zBys0oz1SwM6CYReroV87p/view?usp=sharing" target="_blank" rel="noopener">Download LAMA AI Model</a>
+          </li>
+          <li>Place the downloaded model file in the <code>src</code> directory, <em>in the same folder as <code>MainApp.java</code></em>.</li>
+          <li>Open your terminal or command prompt and navigate to the project directory:<br/>
+            <code>cd path/to/AdrishyaAI</code>
+          </li>
+          <li>Install the required Python packages:<br/>
+            <code>pip install -r requirements.txt</code>
+          </li>
+          <li>Open the project in IntelliJ IDEA.</li>
+          <li>In IntelliJ, open <code>MainApp.java</code> and run the project. The GUI window will open.</li>
+          <li>Load the image you want to edit.</li>
+          <li>Use the <strong>Lasso Selection</strong> tool to easily select the object you want to remove.</li>
+        </ol>
+        <p><strong>Note:</strong> Install the latest Python version and ensure pip is enabled during installation.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="project-structure">
+      <header>Project Structure &amp; SDK Setup</header>
+      <article>
+        <p>Follow these steps to configure your IntelliJ project SDK properly:</p>
+        <ol>
+          <li>Open Project Structure:<br/>
+            <em>File → Project Structure (or press <code>Ctrl + Alt + Shift + S</code>)</em>
+          </li>
+          <li>Go to <strong>Project Settings &gt; Project</strong>:</li>
+          <ul>
+            <li>Under <strong>Project SDK</strong>, make sure a valid JDK (e.g., JDK 21 or JDK 213) is selected.</li>
+            <li>If nothing is selected or it shows “&lt;No SDK&gt;”, you must add one.</li>
+            <li>To add a JDK:<br/>
+              Click <strong>New... → JDK</strong>, then browse to the folder where your JDK is installed (e.g., <code>C:\Program Files\Java\jdk-23</code>).</li>
+
+            <li>Select it and click <strong>Apply</strong>.</li>
+          </ul>
+          <li>Go to <strong>Project Settings &gt; Modules</strong>:</li>
+          <ul>
+            <li>Select your module (e.g., <code>ai_object</code>).</li>
+            <li>Under <strong>Dependencies</strong>, ensure the <strong>Module SDK</strong> is set to the JDK you just added (not JDK 0).</li>
+            <li>If it's set to <em>inherited from project</em>, that’s fine as long as the project JDK is valid.</li>
+          </ul>
+          <li>Click <strong>Apply</strong> then <strong>OK</strong> to save your settings.</li>
+        </ol>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

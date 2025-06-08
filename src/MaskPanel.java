@@ -15,10 +15,10 @@ public class MaskPanel extends JPanel {
     private java.util.List<Point> lassoPoints = new ArrayList<>();
 
     // Theme colors
-    private final Color DARK_BG = new Color(40, 42, 48);
-    private final Color DARK_BORDER = new Color(60, 63, 65);
-    private final Color PLACEHOLDER_TEXT = new Color(150, 150, 150);
-    private final Color LASSO_COLOR = Color.WHITE;
+    private final Color LIGHT_BG = new Color(255, 255, 255);
+    private final Color LIGHT_BORDER = new Color(200, 200, 200);
+    private final Color PLACEHOLDER_TEXT = new Color(100, 100, 100);
+    private final Color LASSO_COLOR = new Color(0, 102, 204); // A blue color for lasso
 
     public void setImage(BufferedImage img) {
         this.image = img;
@@ -76,9 +76,9 @@ public class MaskPanel extends JPanel {
     }
 
     public MaskPanel() {
-        setBackground(DARK_BG);
+        setBackground(LIGHT_BG);
         setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(DARK_BORDER, 1),
+                BorderFactory.createLineBorder(LIGHT_BORDER, 1),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
 
@@ -165,7 +165,7 @@ public class MaskPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Fill with dark background
+        // Fill with light background
         g.setColor(getBackground());
         g.fillRect(0, 0, getWidth(), getHeight());
 
@@ -183,7 +183,7 @@ public class MaskPanel extends JPanel {
 
         // Draw shadow effect
         int shadowOffset = (int) (3 * scaleFactor);
-        g.setColor(new Color(0, 0, 0, 100));
+        g.setColor(new Color(0, 0, 0, 50)); // Lighter shadow
         g.fillRect(imagePosition.x + shadowOffset, imagePosition.y + shadowOffset,
                 (int)(image.getWidth() * scaleFactor), (int)(image.getHeight() * scaleFactor));
 

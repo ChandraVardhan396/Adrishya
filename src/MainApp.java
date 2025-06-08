@@ -25,17 +25,17 @@ public class MainApp {
         }
 
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("🌌 Adrishya - AI Object Remover");
+            JFrame frame = new JFrame("Adrishya - AI Object Remover");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(1200, 800); // Slightly larger for better workspace
             frame.setMinimumSize(new Dimension(900, 600));
             frame.setLocationRelativeTo(null);
             frame.setLayout(new BorderLayout());
-            frame.getContentPane().setBackground(new Color(28, 30, 34)); // Darker background
+            frame.getContentPane().setBackground(Color.WHITE); // Light background
 
             // Header (AppBar with logo and title)
             JPanel header = new JPanel(new BorderLayout());
-            header.setBackground(new Color(40, 42, 48)); // Dark header
+            header.setBackground(new Color(240, 240, 240)); // Light header
             header.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
 
             // Logo and title
@@ -44,7 +44,7 @@ public class MainApp {
 
             // Load SVG icon (replace with your actual logo)
             try {
-                FlatSVGIcon logoIcon = new FlatSVGIcon("logo.svg", 36, 36);
+                FlatSVGIcon logoIcon = new FlatSVGIcon("logo.svg", 28, 28);
                 JLabel logo = new JLabel(logoIcon);
                 titlePanel.add(logo);
             } catch (Exception e) {
@@ -54,14 +54,14 @@ public class MainApp {
 
             JLabel title = new JLabel("Adrishya - AI Object Remover");
             title.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            title.setForeground(new Color(240, 240, 240));
+            title.setForeground(new Color(50, 50, 50)); // Darker text for contrast
             titlePanel.add(title);
 
             header.add(titlePanel, BorderLayout.WEST);
 
             // Version/status label
-            JLabel versionLabel = new JLabel("v1.0.0");
-            versionLabel.setForeground(new Color(180, 180, 180));
+            JLabel versionLabel = new JLabel("v1.1.0");
+            versionLabel.setForeground(new Color(150, 150, 150));
             versionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
             header.add(versionLabel, BorderLayout.EAST);
 
@@ -69,14 +69,14 @@ public class MainApp {
 
             // Main content area
             JPanel contentPanel = new JPanel(new BorderLayout());
-            contentPanel.setBackground(new Color(28, 30, 34));
+            contentPanel.setBackground(Color.WHITE);
             contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
             // Center panel for image and mask with scroll
             MaskPanel maskPanel = new MaskPanel();
             JScrollPane scrollPane = new JScrollPane(maskPanel);
             scrollPane.setBorder(BorderFactory.createEmptyBorder());
-            scrollPane.getViewport().setBackground(new Color(40, 42, 48));
+            scrollPane.getViewport().setBackground(Color.WHITE);
             contentPanel.add(scrollPane, BorderLayout.CENTER);
 
             // Tool panel on the right
@@ -87,14 +87,14 @@ public class MainApp {
 
             // Status bar
             JPanel statusBar = new JPanel(new BorderLayout());
-            statusBar.setBackground(new Color(40, 42, 48));
+            statusBar.setBackground(new Color(240, 240, 240));
             statusBar.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createMatteBorder(1, 0, 0, 0, new Color(60, 63, 65)),
+                    BorderFactory.createMatteBorder(1, 0, 0, 0, new Color(200, 200, 200)),
                     BorderFactory.createEmptyBorder(5, 10, 5, 10)
             ));
 
             JLabel statusLabel = new JLabel("Ready");
-            statusLabel.setForeground(new Color(200, 200, 200));
+            statusLabel.setForeground(new Color(100, 100, 100));
             statusLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 
             JProgressBar progressBar = new JProgressBar();
@@ -114,16 +114,16 @@ public class MainApp {
     private static JPanel createToolPanel(JFrame frame, MaskPanel maskPanel) {
         JPanel toolPanel = new JPanel();
         toolPanel.setLayout(new BoxLayout(toolPanel, BoxLayout.Y_AXIS));
-        toolPanel.setBackground(new Color(40, 42, 48));
+        toolPanel.setBackground(new Color(240, 240, 240)); // Light background
         toolPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createMatteBorder(0, 1, 0, 0, new Color(60, 63, 65)),
+                BorderFactory.createMatteBorder(0, 1, 0, 0, new Color(200, 200, 200)),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
         toolPanel.setPreferredSize(new Dimension(250, 0));
 
         // Section title
         JLabel toolsTitle = new JLabel("Tools");
-        toolsTitle.setForeground(new Color(220, 220, 220));
+        toolsTitle.setForeground(new Color(50, 50, 50));
         toolsTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         toolsTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
         toolPanel.add(toolsTitle);
@@ -131,6 +131,7 @@ public class MainApp {
 
         // File operations
         JPanel filePanel = createSectionPanel("File");
+
         JButton openBtn = createToolButton("Open Image", "open.svg");
         JButton saveBtn = createToolButton("Save Result", "save.svg");
         filePanel.add(openBtn);
@@ -151,7 +152,8 @@ public class MainApp {
         // Processing
         JPanel processPanel = createSectionPanel("Processing");
         JButton removeBtn = createToolButton("Remove Objects", "magic.svg");
-        removeBtn.setBackground(new Color(88, 101, 242)); // Discord-like blue
+        removeBtn.setBackground(new Color(88, 101, 242));
+        removeBtn.setForeground(Color.WHITE);// Discord-like blue
         processPanel.add(removeBtn);
         toolPanel.add(processPanel);
 
@@ -297,15 +299,15 @@ public class MainApp {
     private static JPanel createSectionPanel(String title) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(new Color(50, 53, 60));
+        panel.setBackground(new Color(240, 240, 240)); // Light background
         panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(70, 73, 80), 1),
+                BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel label = new JLabel(title);
-        label.setForeground(new Color(200, 200, 200));
+        label.setForeground(new Color(50, 50, 50));
         label.setFont(new Font("Segoe UI", Font.BOLD, 14));
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -319,12 +321,12 @@ public class MainApp {
         JButton btn = new JButton(text);
         btn.setAlignmentX(Component.LEFT_ALIGNMENT);
         btn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        btn.setBackground(new Color(65, 68, 75));
-        btn.setForeground(Color.WHITE);
+        btn.setBackground(new Color(220, 220, 220)); // Light button background
+        btn.setForeground(Color.BLACK); // Dark text
         btn.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         btn.setFocusPainted(false);
         btn.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(90, 93, 100), 1),
+                BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
                 BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
 
@@ -354,7 +356,7 @@ public class MainApp {
         } else if (message.toLowerCase().contains("success") || message.toLowerCase().contains("ready")) {
             statusLabel.setForeground(new Color(100, 255, 100));
         } else {
-            statusLabel.setForeground(new Color(200, 200, 200));
+            statusLabel.setForeground(new Color(100, 100, 100));
         }
     }
 
@@ -368,8 +370,8 @@ public class MainApp {
     // Style checkbox
     private static void styleCheckBox(JCheckBox cb) {
         cb.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        cb.setBackground(new Color(50, 53, 60));
-        cb.setForeground(Color.WHITE);
+        cb.setBackground(new Color(240, 240, 240)); // Light background
+        cb.setForeground(Color.BLACK); // Dark text
         cb.setAlignmentX(Component.LEFT_ALIGNMENT);
         cb.setFocusPainted(false);
     }
